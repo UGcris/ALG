@@ -51,8 +51,8 @@ public class KMP {
             if(str.charAt(i) == matchedStr.charAt(j))
                 j++;
             if(j==matchedStr.length()){
-                j=next[j];
                 list.add(i-j+1);
+                j=next[j];
             }
         }
         return  list;
