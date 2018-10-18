@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{jquery.js}"></script>
+</head>
+<body>
+    <h2>hello html</h2><br>
+    <button id="button" style=" width: 50px; height: 30px; ">按钮</button>
+    <br>
+    <input id="input" type="text">
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <th>进度</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        <tr id="firstTr">
+            <td>第一条</td>
+        </tr>
+        </tbody>
+    </table>
+    <script>
+        var countNum=0;
+        $("#button").click(function () {
+            console.log("hello");
+            reloadView();
+        });
+
+        function reloadView() {
+            countNum=0;
+            $.ajax({
+                type :"get",
+                async :true, //同步请求
+                url : "/flesh",
+                dataType:"json",
+                success:function(datas){
+                    //alert(datas);
+                    // 将数据添加至列表
+                    $("<tr><td>"+datas.count+"</td></tr>").appendTo($("#tbody"));
+                },
+                error:function(datas) {
+                    debugger;
+                    // alert("失败，请稍后再试！");
+                }
+            });
+
+            //轮询任务
+            setInterval("count()",1000);
+        }
+        function count() {
+            $.ajax({
+                type :"get",
+                async :true, //同步请求
+                url : "/count",
+                dataType:"json",
+                success:function(datas){
+                    //alert(datas);
+                    // $("#mainContent").html(dates);//要刷新的div
+                    $("<tr><td>"+datas+"</td></tr>").appendTo($("#tbody"));
+                },
+                error:function(datas) {
+                    debugger;
+                    // alert("失败，请稍后再试！");
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
+
