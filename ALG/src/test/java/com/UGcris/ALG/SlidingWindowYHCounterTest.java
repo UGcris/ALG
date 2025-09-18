@@ -1,6 +1,6 @@
 package com.UGcris.ALG;
 
-import com.UGcris.ALG.ratelimite.SlidingWindowCounter;
+import com.UGcris.ALG.ratelimite.SlidingWindowYHCounter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,14 +11,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.Assert.*;
 
-public class SlidingWindowCounterTest {
-    private SlidingWindowCounter counter;
+public class SlidingWindowYHCounterTest {
+    private SlidingWindowYHCounter counter;
     private final long WINDOW_SIZE_MILLIS = 1000; // 1秒窗口（便于测试）
     private final int LIMIT = 3; // 最多3次
 
     @Before
     public void setUp() {
-        counter = new SlidingWindowCounter(WINDOW_SIZE_MILLIS, LIMIT);
+        counter = new SlidingWindowYHCounter(WINDOW_SIZE_MILLIS, LIMIT);
     }
 
     /**
