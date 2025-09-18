@@ -1,20 +1,21 @@
 package com.UGcris.ALG;
 
 import com.UGcris.ALG.ratelimite.TokenBucketAlgorithm;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
 
 class TokenBucketAlgorithmTest {
     private TokenBucketAlgorithm tokenBucket;
 
-    @BeforeEach
+    @Before
     void setUp() {
         // 假设构造函数接收容量和填充速率参数
         tokenBucket = new TokenBucketAlgorithm(5, 10); // 容量=10, 每秒填充1个令牌

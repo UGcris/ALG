@@ -1,10 +1,12 @@
 package com.UGcris.ALG;
 import com.UGcris.ALG.ratelimite.FixedWindowRateLimiter;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.concurrent.TimeUnit;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.Assert.*;
 
 class FixedWindowRateLimiterTest {
     private FixedWindowRateLimiter rateLimiter;
@@ -12,12 +14,12 @@ class FixedWindowRateLimiterTest {
     private static final int MAX_REQUESTS = 5;
     private static final long WINDOW_SIZE_MS = 1000; // 1 second
 
-    @BeforeEach
+    @Before
     void setUp() {
         rateLimiter = new FixedWindowRateLimiter(MAX_REQUESTS, WINDOW_SIZE_MS);
     }
 
-    @AfterEach
+    @After
     void tearDown() {
         rateLimiter.shutdown();
     }

@@ -1,22 +1,23 @@
 package com.UGcris.ALG;
 
 import com.UGcris.ALG.ratelimite.LeakyBucketAlgorithm;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
 
 public class LeakyBucketAlgorithmTest {
     private LeakyBucketAlgorithm leakyBucket;
     private final int CAPACITY = 10;
     private final  int LEAK_RATE_PER_MS = 1; // 每秒漏100个
 
-    @BeforeEach
+    @Before
     void setUp() {
         leakyBucket = new LeakyBucketAlgorithm(CAPACITY, LEAK_RATE_PER_MS);
     }
